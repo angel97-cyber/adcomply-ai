@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdComply AI — Stop $5,000 Fines on AI-Generated Ads</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              300: '#a5b4fc',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+              950: '#1e1b4b',
+            },
+            danger: {
+              50: '#fef2f2',
+              100: '#fee2e2',
+              400: '#f87171',
+              500: '#ef4444',
+              600: '#dc2626',
+              700: '#b91c1c',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes float {
+      0%, 100% { transform: perspective(1000px) rotateY(-4deg) rotateX(2deg) translateY(0px); }
+      50% { transform: perspective(1000px) rotateY(-4deg) rotateX(2deg) translateY(-12px); }
+    }
+    .float-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 40px 8px rgba(99, 102, 241, 0.15), 0 25px 60px -12px rgba(99, 102, 241, 0.25); }
+      50% { box-shadow: 0 0 60px 16px rgba(99, 102, 241, 0.2), 0 25px 80px -12px rgba(99, 102, 241, 0.35); }
+    }
+    .glow-shadow {
+      animation: pulse-glow 4s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    .shimmer-btn {
+      background-size: 200% auto;
+      animation: shimmer 3s linear infinite;
+    }
+    .gradient-bg {
+      background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse 60% 40% at 80% 0%, rgba(129, 140, 248, 0.06) 0%, transparent 50%);
+    }
+    .dot-pattern {
+      background-image: radial-gradient(circle, rgba(99, 102, 241, 0.07) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    @keyframes count-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+  </style>
+</head>
+<body class="font-sans text-gray-900 antialiased">
+
+  <!-- ════════════════════════════════════════ -->
+  <!--  NAVIGATION                              -->
+  <!-- ════════════════════════════════════════ -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100/80">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center shadow-md shadow-brand-500/20">
+          <svg class="w-4.5 h-4.5 text-white" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L3 7V12C3 17.25 6.75 22.13 12 23C17.25 22.13 21 17.25 21 12V7L12 2Z"/>
+            <path d="M9 12L11 14L15 10"/>
+          </svg>
+        </div>
+        <span class="text-lg font-bold tracking-tight text-gray-900">AdComply AI</span>
+      </div>
+      <!-- CTA -->
+      <a href="#pricing" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold rounded-lg transition-all duration-200 shadow-md shadow-brand-600/20 hover:shadow-lg hover:shadow-brand-600/30 hover:-translate-y-0.5">
+        Get the Extension
+        <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+      <a href="#pricing" class="sm:hidden inline-flex items-center px-4 py-2 bg-brand-600 text-white text-sm font-semibold rounded-lg">
+        Get It
+      </a>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════ -->
+  <!--  HERO SECTION                            -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="relative pt-28 pb-20 lg:pt-36 lg:pb-28 gradient-bg overflow-hidden">
+    <!-- Subtle decorative elements -->
+    <div class="absolute top-20 left-10 w-72 h-72 bg-brand-100/30 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-brand-50/50 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Left: Copy -->
+        <div class="max-w-xl">
+          <!-- Urgency Badge -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-danger-50 border border-danger-100 rounded-full mb-6">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-danger-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-danger-500"></span>
+            </span>
+            <span class="text-xs font-semibold text-danger-700 tracking-wide">NY S.8420-A ENFORCEMENT ACTIVE</span>
+          </div>
+
+          <!-- Headline -->
+          <h1 class="text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.1] tracking-tight text-gray-900 mb-6">
+            Your next AI ad could cost you
+            <span class="relative inline-block">
+              <span class="relative z-10 text-danger-600">$5,000</span>
+              <span class="absolute bottom-1 left-0 right-0 h-3 bg-danger-100/70 -z-0 rounded"></span>
+            </span>
+            <span class="text-brand-600">.</span>
+          </h1>
+
+          <!-- Subheadline -->
+          <p class="text-lg sm:text-xl text-gray-500 leading-relaxed mb-8 max-w-lg">
+            The <strong class="text-gray-700">NY S.8420-A synthetic performer law</strong> and the <strong class="text-gray-700">EU AI Act Article 50</strong> are now enforceable. One non-compliant ad asset is all it takes. AdComply AI makes every image audit-proof — entirely client-side.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
+            <a href="#pricing" class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-gradient-to-b from-brand-500 to-brand-700 hover:from-brand-400 hover:to-brand-600 text-white text-base font-bold rounded-xl transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/35 hover:-translate-y-0.5 w-full sm:w-auto">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L3 7V12C3 17.25 6.75 22.13 12 23C17.25 22.13 21 17.25 21 12V7L12 2Z"/>
+                <path d="M9 12L11 14L15 10"/>
+              </svg>
+              Secure Lifetime License — $29
+            </a>
+            <span class="text-sm text-gray-400 font-medium">One-time payment. No subscriptions.</span>
+          </div>
+
+          <!-- Trust Signals -->
+          <div class="flex items-center gap-6 text-sm text-gray-400">
+            <div class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-green-500" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 1a7 7 0 110 14A7 7 0 018 1zm3.02 4.72a.75.75 0 00-1.06.02L7.4 8.42 6.02 7.02a.75.75 0 10-1.06 1.06l1.92 1.92a.75.75 0 001.07-.02l3.07-3.2a.75.75 0 00-.02-1.06z"/>
+              </svg>
+              <span>Chrome Web Store</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-green-500" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 1a7 7 0 110 14A7 7 0 018 1zm3.02 4.72a.75.75 0 00-1.06.02L7.4 8.42 6.02 7.02a.75.75 0 10-1.06 1.06l1.92 1.92a.75.75 0 001.07-.02l3.07-3.2a.75.75 0 00-.02-1.06z"/>
+              </svg>
+              <span>100% Client-Side</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-green-500" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 1a7 7 0 110 14A7 7 0 018 1zm3.02 4.72a.75.75 0 00-1.06.02L7.4 8.42 6.02 7.02a.75.75 0 10-1.06 1.06l1.92 1.92a.75.75 0 001.07-.02l3.07-3.2a.75.75 0 00-.02-1.06z"/>
+              </svg>
+              <span>Zero Data Sent</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Product Screenshot -->
+        <div class="relative flex justify-center lg:justify-end">
+          <!-- Glow backdrop -->
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div class="w-80 h-80 bg-gradient-to-br from-brand-300/20 to-brand-500/10 rounded-full blur-3xl"></div>
+          </div>
+          <!-- Screenshot -->
+          <div class="relative float-animation">
+            <div class="glow-shadow rounded-2xl">
+              <img
+                src="ui-screenshot.png"
+                alt="AdComply AI Chrome Extension Interface"
+                class="relative z-10 w-full max-w-sm rounded-2xl border border-white/60 shadow-2xl"
+                style="background: linear-gradient(135deg, #f8fafc, #eef2ff); min-height: 420px;"
+              >
+            </div>
+            <!-- Floating badge -->
+            <div class="absolute -bottom-4 -left-4 z-20 bg-white rounded-xl shadow-lg shadow-gray-200/50 border border-gray-100 px-4 py-3 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center">
+                <svg class="w-5 h-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-gray-900">Compliant</p>
+                <p class="text-xs text-gray-400">IPTC + Watermark ✓</p>
+              </div>
+            </div>
+            <!-- Floating fine counter -->
+            <div class="absolute -top-3 -right-3 z-20 bg-gray-900 text-white rounded-xl shadow-lg px-4 py-2.5 border border-gray-700/50">
+              <p class="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Fines Avoided</p>
+              <p class="text-xl font-extrabold text-green-400 tracking-tight">$15,000</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!--  THE THREAT — 3 COLUMNS                  -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="relative py-20 lg:py-28 bg-white dot-pattern">
+    <div class="max-w-6xl mx-auto px-6">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-gray-100 rounded-full mb-4">
+          <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Why This Matters Now</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-gray-900 mb-4">
+          The regulatory walls are closing in<span class="text-brand-600">.</span>
+        </h2>
+        <p class="text-lg text-gray-500 max-w-2xl mx-auto">
+          Two major jurisdictions now mandate machine-readable provenance and visible disclosure on AI-generated advertising content.
+        </p>
+      </div>
+
+      <!-- 3 Cards -->
+      <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+
+        <!-- Card 1: NY Fine -->
+        <div class="group relative bg-white rounded-2xl border border-gray-100 p-7 transition-all duration-300 hover:shadow-xl hover:shadow-gray-200/50 hover:border-gray-200 hover:-translate-y-1">
+          <!-- Icon -->
+          <div class="w-12 h-12 rounded-xl bg-danger-50 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-6 h-6 text-danger-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+          </div>
+          <!-- Fine Amount -->
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-danger-50 border border-danger-100 rounded-lg mb-3">
+            <span class="text-xl font-extrabold text-danger-600">$5,000</span>
+            <span class="text-xs font-semibold text-danger-500">per violation</span>
+          </div>
+          <!-- Title -->
+          <h3 class="text-lg font-bold text-gray-900 mb-2">NY State Penalty</h3>
+          <!-- Description -->
+          <p class="text-sm text-gray-500 leading-relaxed mb-4">
+            Senate Bill S.8420-A requires visible disclosure on all ads featuring AI-generated synthetic performers. Non-compliance triggers statutory damages — <strong class="text-gray-700">per image, per instance</strong>.
+          </p>
+          <!-- Tag -->
+          <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-danger-600">
+            <span class="w-1.5 h-1.5 rounded-full bg-danger-500"></span>
+            Enforcement Active
+          </div>
+        </div>
+
+        <!-- Card 2: EU Deadline -->
+        <div class="group relative bg-white rounded-2xl border border-gray-100 p-7 transition-all duration-300 hover:shadow-xl hover:shadow-gray-200/50 hover:border-gray-200 hover:-translate-y-1">
+          <!-- Icon -->
+          <div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-6 h-6 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <!-- Deadline -->
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-amber-50 border border-amber-100 rounded-lg mb-3">
+            <span class="text-xl font-extrabold text-amber-600">Aug 2</span>
+            <span class="text-xs font-semibold text-amber-500">deadline</span>
+          </div>
+          <!-- Title -->
+          <h3 class="text-lg font-bold text-gray-900 mb-2">EU AI Act Deadline</h3>
+          <!-- Description -->
+          <p class="text-sm text-gray-500 leading-relaxed mb-4">
+            Article 50 mandates machine-readable metadata on all AI-generated content distributed in the EU. IPTC and C2PA provenance signals become <strong class="text-gray-700">legally required infrastructure</strong>.
+          </p>
+          <!-- Tag -->
+          <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-600">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+            Countdown Active
+          </div>
+        </div>
+
+        <!-- Card 3: Client-Side -->
+        <div class="group relative bg-white rounded-2xl border border-gray-100 p-7 transition-all duration-300 hover:shadow-xl hover:shadow-gray-200/50 hover:border-gray-200 hover:-translate-y-1">
+          <!-- Icon -->
+          <div class="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-6 h-6 text-brand-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L3 7V12C3 17.25 6.75 22.13 12 23C17.25 22.13 21 17.25 21 12V7L12 2Z"/>
+              <path d="M9 12L11 14L15 10"/>
+            </svg>
+          </div>
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-green-50 border border-green-100 rounded-lg mb-3">
+            <span class="text-xl font-extrabold text-green-600">100%</span>
+            <span class="text-xs font-semibold text-green-500">client-side</span>
+          </div>
+          <!-- Title -->
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Zero Data Exfiltration</h3>
+          <!-- Description -->
+          <p class="text-sm text-gray-500 leading-relaxed mb-4">
+            Every operation runs in your browser. No uploads, no cloud processing, no third-party APIs. Your creative assets <strong class="text-gray-700">never leave your machine</strong>.
+          </p>
+          <!-- Tag -->
+          <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-green-600">
+            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+            Privacy Guaranteed
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!--  HOW IT WORKS                            -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="py-20 lg:py-28 bg-gray-50/70">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-50 border border-brand-100 rounded-full mb-4">
+          <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">Simple Workflow</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-gray-900 mb-4">
+          Three clicks to full compliance<span class="text-brand-600">.</span>
+        </h2>
+        <p class="text-lg text-gray-500 max-w-xl mx-auto">
+          No configuration. No cloud accounts. Install, toggle, process.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+        <!-- Step 1 -->
+        <div class="text-center">
+          <div class="w-14 h-14 rounded-2xl bg-white border border-gray-200 shadow-sm flex items-center justify-center mx-auto mb-5">
+            <span class="text-2xl font-extrabold text-brand-600">1</span>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2">Install Extension</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">
+            One click from the Chrome Web Store. No sign-ups, no API keys, no backend.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="text-center">
+          <div class="w-14 h-14 rounded-2xl bg-white border border-gray-200 shadow-sm flex items-center justify-center mx-auto mb-5">
+            <span class="text-2xl font-extrabold text-brand-600">2</span>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2">Toggle Your Rules</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">
+            Enable NY watermark law, EU metadata injection, or both. Jurisdiction-specific compliance on demand.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="text-center">
+          <div class="w-14 h-14 rounded-2xl bg-white border border-gray-200 shadow-sm flex items-center justify-center mx-auto mb-5">
+            <span class="text-2xl font-extrabold text-brand-600">3</span>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2">Process &amp; Ship</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">
+            Hit "Process Active Image." Watermarks are burned, IPTC metadata is injected. Download your audit-proof asset.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!--  PRICING SECTION                         -->
+  <!-- ════════════════════════════════════════ -->
+  <section id="pricing" class="py-20 lg:py-28 bg-white relative overflow-hidden">
+    <!-- Decorative -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-b from-brand-50/60 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+      <!-- Section Header -->
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-green-50 border border-green-100 rounded-full mb-4">
+          <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Launch Pricing</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-gray-900 mb-4">
+          One price. Lifetime protection<span class="text-brand-600">.</span>
+        </h2>
+        <p class="text-lg text-gray-500 max-w-lg mx-auto">
+          Pay once, stay compliant forever. No subscriptions, no usage limits.
+        </p>
+      </div>
+
+      <!-- Pricing Card -->
+      <div class="max-w-md mx-auto">
+        <div class="relative bg-white rounded-3xl border-2 border-brand-200 shadow-xl shadow-brand-100/30 overflow-hidden">
+          <!-- Popular Badge -->
+          <div class="absolute top-0 left-0 right-0 bg-gradient-to-r from-brand-600 to-brand-500 text-center py-2">
+            <span class="text-xs font-bold text-white uppercase tracking-widest">Most Popular — Limited Time</span>
+          </div>
+
+          <div class="pt-16 pb-8 px-8">
+            <!-- Plan Name -->
+            <h3 class="text-sm font-bold text-brand-600 uppercase tracking-wider mb-2">Pro Lifetime License</h3>
+
+            <!-- Price -->
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-6xl font-extrabold tracking-tight text-gray-900">$29</span>
+              <div class="flex flex-col">
+                <span class="text-sm font-semibold text-gray-400 line-through">$99</span>
+                <span class="text-sm font-semibold text-gray-500">one-time</span>
+              </div>
+            </div>
+
+            <p class="text-sm text-gray-400 mb-8">
+              That's less than <strong class="text-gray-600">1%</strong> of a single NY fine.
+            </p>
+
+            <!-- Divider -->
+            <div class="h-px bg-gray-100 mb-6"></div>
+
+            <!-- Features -->
+            <ul class="space-y-3.5 mb-8">
+              <li class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-500" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2.5 6L5 8.5L9.5 3.5"/>
+                  </svg>
+                </div>
+                <span class="text-sm text-gray-700 font-medium">Unlimited image processing</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-500" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2.5 6L5 8.5L9.5 3.5"/>
+                  </svg>
+                </div>
+                <span class="text-sm text-gray-700 font-medium">NY Law visible watermarking (S.8420-A)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-500" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2.5 6L5 8.5L9.5 3.5"/>
+                  </svg>
+                </div>
+                <span class="text-sm text-gray-700 font-medium">EU AI Act IPTC / EXIF metadata injection</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-500" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2.5 6L5 8.5L9.5 3.5"/>
+                  </svg>
+                </div>
+                <span class="text-sm text-gray-700 font-medium">100% client-side — zero data exfiltration</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-500" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2.5 6L5 8.5L9.5 3.5"/>
+                  </svg>
+                </div>
+                <span class="text-sm text-gray-700 font-medium">Lifetime updates — all future regulations included</span>
+              </li>
+            </ul>
+
+            <!-- CTA Button -->
+            <a href="#" class="group w-full flex items-center justify-center gap-2.5 px-6 py-4 bg-gradient-to-b from-brand-500 to-brand-700 hover:from-brand-400 hover:to-brand-600 text-white text-base font-bold rounded-xl transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/40 hover:-translate-y-0.5">
+              Pre-Order Now
+              <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4"/>
+              </svg>
+            </a>
+
+            <!-- Assurance -->
+            <div class="flex items-center justify-center gap-4 mt-5">
+              <div class="flex items-center gap-1.5 text-xs text-gray-400">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="7" width="10" height="7" rx="1.5"/>
+                  <path d="M5 7V5a3 3 0 116 0v2"/>
+                </svg>
+                Secure checkout
+              </div>
+              <div class="flex items-center gap-1.5 text-xs text-gray-400">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 8A6 6 0 112 8a6 6 0 0112 0z"/>
+                  <path d="M8 5v3l2 1"/>
+                </svg>
+                Instant delivery
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Urgency line under card -->
+        <div class="mt-6 text-center">
+          <p class="text-sm text-gray-400">
+            <span class="text-danger-500 font-semibold">⚠ Launch pricing ends soon.</span> Price increases to $99 after the first 200 licenses.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!--  FINAL CTA BANNER                        -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="py-20 lg:py-24 bg-gradient-to-b from-gray-900 to-brand-950 relative overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute top-0 left-1/4 w-80 h-80 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 right-1/4 w-60 h-60 bg-brand-400/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-3xl mx-auto px-6 text-center relative z-10">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-danger-500/10 border border-danger-500/20 rounded-full mb-6">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-danger-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-danger-500"></span>
+        </span>
+        <span class="text-xs font-semibold text-danger-400 tracking-wide">FINES ARE ALREADY BEING ASSESSED</span>
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
+        Don't let your next campaign<br>
+        become a <span class="text-danger-400">$5,000 lesson</span>.
+      </h2>
+
+      <p class="text-lg text-gray-400 mb-10 max-w-xl mx-auto">
+        Every AI image you publish without compliant metadata and watermarks is a liability. Fix it in three clicks.
+      </p>
+
+      <a href="#pricing" class="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-white hover:bg-gray-100 text-gray-900 text-base font-bold rounded-xl transition-all duration-200 shadow-lg shadow-black/20 hover:shadow-xl hover:-translate-y-0.5">
+        <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L3 7V12C3 17.25 6.75 22.13 12 23C17.25 22.13 21 17.25 21 12V7L12 2Z"/>
+          <path d="M9 12L11 14L15 10"/>
+        </svg>
+        Get AdComply AI for $29
+      </a>
+
+      <p class="text-sm text-gray-500 mt-4">One-time payment &middot; Lifetime access &middot; No subscriptions</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!--  FOOTER                                  -->
+  <!-- ════════════════════════════════════════ -->
+  <footer class="bg-gray-950 border-t border-gray-800/50">
+    <div class="max-w-6xl mx-auto px-6 py-10">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <!-- Logo -->
+        <div class="flex items-center gap-2">
+          <div class="w-6 h-6 rounded-md bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center">
+            <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L3 7V12C3 17.25 6.75 22.13 12 23C17.25 22.13 21 17.25 21 12V7L12 2Z"/>
+              <path d="M9 12L11 14L15 10"/>
+            </svg>
+          </div>
+          <span class="text-sm font-semibold text-gray-400">AdComply AI</span>
+        </div>
+        <!-- Copyright -->
+        <p class="text-xs text-gray-600">
+          &copy; 2026 AdComply AI. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
